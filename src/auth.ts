@@ -28,7 +28,6 @@ app.get(AUTH_ROUTE, async (c) => {
     })
   }
   const code = c.req.query('code')
-  console.log('code', code)
   if (!code) {
     if (!getCookie(c, 'state')) {
       const state = make_state()
@@ -80,7 +79,6 @@ const getTokenFromCode = async (
       code: code,
     },
   )
-  console.log(response)
   if ('error_description' in response) {
     const res = new Response(
       JSON.stringify({ message: response.error_description }),
