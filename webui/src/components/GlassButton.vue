@@ -1,6 +1,5 @@
 <template>
   <button
-    ref="btnRef"
     :type="type"
     :disabled="disabled || loading"
     class="relative overflow-hidden rounded-full px-6 py-3 font-semibold text-sm tracking-wide transition-all duration-200 select-none outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed"
@@ -38,7 +37,6 @@ const props = withDefaults(
 
 const emit = defineEmits<{ click: [e: MouseEvent] }>()
 
-const btnRef = ref<HTMLButtonElement | null>(null)
 const shimmerActive = ref(false)
 
 const variantClass = computed(() => {

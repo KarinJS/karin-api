@@ -1,11 +1,11 @@
 <template>
   <!-- Full-viewport clip container -->
-  <div ref="containerRef" class="home-viewport">
+  <div class="home-viewport">
     <!-- Animating slides stack — GSAP translates this vertically -->
     <div ref="slidesRef" class="home-slides">
 
       <!-- ── Screen 1 · Hero ─────────────────────────────────────── -->
-      <section ref="heroRef" class="home-screen relative flex flex-col items-center justify-center overflow-hidden px-6 text-center">
+      <section class="home-screen relative flex flex-col items-center justify-center overflow-hidden px-6 text-center">
         <!-- Radial glow -->
         <div class="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div class="h-[600px] w-[600px] rounded-full bg-indigo-600/10 blur-[120px]" />
@@ -146,9 +146,7 @@ import GlassButton from '@/components/GlassButton.vue'
 const router = useRouter()
 
 // ── Refs ──────────────────────────────────────────────────────────
-const containerRef = ref<HTMLElement | null>(null)
 const slidesRef    = ref<HTMLElement | null>(null)
-const heroRef      = ref<HTMLElement | null>(null)
 const featuresRef  = ref<HTMLElement | null>(null)
 const badgeEl      = ref<HTMLElement | null>(null)
 const titleEl      = ref<HTMLElement | null>(null)

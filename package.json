@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "dotenv -- tsx watch src/index.ts",
     "build": "tsc --noEmit && tsdown",
+    "build:webui": "pnpm --filter webui run build",
     "start": "node dist/index.js"
   },
   "dependencies": {
