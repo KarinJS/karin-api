@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-2xl mx-auto px-8 py-16">
+  <div class="max-w-screen-2xl mx-auto px-4 sm:px-8 py-10 sm:py-16">
     <!-- Page header -->
     <div ref="headerRef" class="mb-12 opacity-0">
       <h1 class="font-display font-bold text-4xl text-white mb-3">插件库</h1>
@@ -7,7 +7,7 @@
     </div>
 
     <!-- Search & filter bar -->
-    <div ref="filterRef" class="mb-8 flex flex-col sm:flex-row gap-4 opacity-0">
+    <div ref="filterRef" class="mb-8 flex flex-col gap-4 opacity-0">
       <div class="relative flex-1">
         <svg class="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-white/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -20,7 +20,7 @@
           @input="plugins.setSearch(($event.target as HTMLInputElement).value)"
         />
       </div>
-      <div class="flex flex-wrap gap-2 items-center">
+      <div class="flex gap-2 items-center overflow-x-auto pb-1 scrollbar-hide">
         <button
           class="chip"
           :class="plugins.activeTag === null && 'chip-active'"

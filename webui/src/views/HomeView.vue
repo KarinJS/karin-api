@@ -39,7 +39,7 @@
         </div>
 
         <!-- Stats row -->
-        <div ref="statsEl" class="mt-14 flex flex-wrap justify-center gap-12 opacity-0">
+        <div ref="statsEl" class="mt-8 sm:mt-14 flex flex-wrap justify-center gap-6 sm:gap-12 opacity-0">
           <div v-for="stat in stats" :key="stat.label" class="text-center">
             <p class="font-display font-bold gradient-text" style="font-size: clamp(1.75rem, 2.5vw, 3rem)">{{ stat.value }}</p>
             <p class="text-xs 2xl:text-sm text-white/40 mt-1 uppercase tracking-wider">{{ stat.label }}</p>
@@ -294,6 +294,9 @@ onMounted(() => {
   document.documentElement.classList.remove('home-snap-scroll')
   document.body.classList.remove('home-snap-scroll-body')
 
+  // Lock body scroll — prevents the svh/vh gap showing as scrollable empty space
+  document.body.classList.add('home-locked')
+
   gsap.set(slidesRef.value, { y: '0%' })
   gsap.set([badgeEl.value, titleEl.value, subtitleEl.value, ctaEl.value, statsEl.value], {
     y: 30,
@@ -316,6 +319,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  document.body.classList.remove('home-locked')
   window.removeEventListener('wheel',      onWheel)
   window.removeEventListener('keydown',    onKeyDown)
   window.removeEventListener('touchstart', onTouchStart)

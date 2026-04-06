@@ -51,6 +51,13 @@ body,
 
 /* Home page fullpage scroll — driven by GSAP, not CSS snap */
 
+/* Locked when HomeView is mounted: prevents body from scrolling into
+   the svh/vh gap that appears on mobile browsers */
+body.home-locked {
+  overflow: hidden;
+  height: 100svh;
+}
+
 body {
   margin: 0;
   background-color: var(--color-bg);

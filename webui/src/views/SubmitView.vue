@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-3xl mx-auto px-6 py-16">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
     <!-- Page header -->
     <div ref="headerRef" class="mb-10 opacity-0">
       <h1 class="font-display font-bold text-4xl text-white mb-3">提交插件</h1>
@@ -7,7 +7,7 @@
     </div>
 
     <!-- Step indicators -->
-    <div ref="stepsRef" class="mb-10 flex items-center gap-3 opacity-0">
+    <div ref="stepsRef" class="mb-10 flex flex-wrap items-center gap-2 sm:gap-3 opacity-0">
       <div v-for="(step, i) in steps" :key="i" class="flex items-center gap-3">
         <div class="flex items-center gap-2">
           <div class="step-dot" :class="currentStep > i ? 'done' : currentStep === i ? 'active' : ''" />
