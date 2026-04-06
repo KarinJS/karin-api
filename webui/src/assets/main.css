@@ -1,0 +1,317 @@
+/* ── Google Fonts ─────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap");
+
+@import "tailwindcss";
+
+/* ── Design Tokens ────────────────────────────────────────────── */
+@theme {
+  --font-display: "Syne", sans-serif;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+
+  /* Core palette */
+  --color-bg: #070711;
+  --color-surface: rgba(255, 255, 255, 0.06);
+  --color-surface-hover: rgba(255, 255, 255, 0.1);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-bright: rgba(255, 255, 255, 0.2);
+
+  /* Brand gradient stops */
+  --color-primary: #6366f1;
+  --color-primary-light: #818cf8;
+  --color-secondary: #8b5cf6;
+  --color-accent: #a78bfa;
+
+  /* Text */
+  --color-text: rgba(255, 255, 255, 0.92);
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+  --color-text-faint: rgba(255, 255, 255, 0.3);
+
+  /* Glass blur levels */
+  --blur-sm: blur(8px);
+  --blur-md: blur(16px);
+  --blur-lg: blur(24px);
+  --blur-xl: blur(40px);
+}
+
+/* ── Base Reset ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+/* Home page fullpage scroll — driven by GSAP, not CSS snap */
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ── Fullpage scroll layout ──────────────────────────────────── */
+.home-viewport {
+  position: relative;
+  height: calc(100svh - 5rem);
+  overflow: hidden;
+}
+
+.home-slides {
+  height: 200%;
+  will-change: transform;
+}
+
+.home-screen {
+  height: 50%;
+}
+
+/* Hide scrollbar on overflow-y: auto fallback */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Height-responsive second screen ────────────────────────── */
+/* 矮屏（笔记本 ≤ 800px 视口高）：缩减内边距和间距 */
+@media (max-height: 800px) {
+  .s2-gap    { gap: 0.5rem !important; }
+  .s2-py     { padding-block: 0.75rem !important; }
+  .s2-card   { padding: 0.75rem !important; gap: 0.5rem !important; }
+  .s2-cta    { padding: 0.875rem 1.5rem !important; }
+  .s2-head   { margin-bottom: 0 !important; }
+  .s2-head h2 { font-size: 1.25rem !important; margin-bottom: 0.25rem !important; }
+}
+
+/* 大屏（2K ≥ 1000px 视口高）：放大间距和圆角 */
+@media (min-height: 1000px) {
+  .s2-gap    { gap: 2rem !important; }
+  .s2-py     { padding-block: 3rem !important; }
+  .s2-card   { padding: 1.75rem !important; gap: 1.25rem !important; }
+  .s2-cta    { padding: 2rem 3rem !important; }
+  .s2-head h2 { font-size: 2.25rem !important; }
+}
+
+/* ── Glass Utility Classes ────────────────────────────────────── */
+.glass {
+  background: var(--color-surface);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--color-border);
+}
+
+.glass-bright {
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--color-border-bright);
+}
+
+.glass-nav {
+  background: rgba(7, 7, 17, 0.7);
+  backdrop-filter: var(--blur-xl);
+  -webkit-backdrop-filter: var(--blur-xl);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ── Karin Brand Typography ───────────────────────────────────── */
+.karin-brand {
+  font-family: "Cinzel", serif;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  background: linear-gradient(
+    135deg,
+    #e0e7ff 0%,
+    #a5b4fc 25%,
+    #818cf8 50%,
+    #c4b5fd 75%,
+    #f0abfc 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.45));
+}
+
+/* ── Gradient Text ────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, #f472b6 0%, #818cf8 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Gradient Backgrounds ─────────────────────────────────────── */
+.gradient-bg {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Glow Effects ─────────────────────────────────────────────── */
+.glow-primary {
+  box-shadow: 0 0 40px rgba(99, 102, 241, 0.25), 0 0 80px rgba(99, 102, 241, 0.1);
+}
+
+.glow-text {
+  text-shadow: 0 0 20px rgba(167, 139, 250, 0.5);
+}
+
+/* ── Scrollbar Styling ────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.7);
+}
+
+/* ── Selection ────────────────────────────────────────────────── */
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #fff;
+}
+
+/* ── Noise Overlay ────────────────────────────────────────────── */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* ── Page Transition ──────────────────────────────────────────── */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+/* ── Chip / Tag ───────────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: var(--color-accent);
+  cursor: default;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.chip:hover {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.chip-active {
+  background: rgba(99, 102, 241, 0.3);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+/* ── Input Base ───────────────────────────────────────────────── */
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  color: var(--color-text);
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.glass-input::placeholder {
+  color: var(--color-text-faint);
+}
+
+.glass-input:focus {
+  border-color: rgba(99, 102, 241, 0.6);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* ── Step Indicator ───────────────────────────────────────────── */
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--color-border-bright);
+  transition: background 0.3s, transform 0.3s;
+}
+
+.step-dot.active {
+  background: var(--color-primary);
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
+}
+
+.step-dot.done {
+  background: var(--color-accent);
+}
